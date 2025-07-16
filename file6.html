@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flashy Code - Stanisław Marcisz</title>
+    <style>
+        /* Reset i podstawowe style */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: #f8f9fa;
+            color: #212529;
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+        
+        /* Kontener główny */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        /* Nagłówek */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 4rem;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #212529;
+            text-decoration: none;
+        }
+        
+        .language-switcher {
+            display: flex;
+            gap: 0.5rem;
+        }
+        
+        .language-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.25rem 0.5rem;
+            font-weight: 500;
+            color: #495057;
+        }
+        
+        .language-btn.active {
+            color: #212529;
+            font-weight: 600;
+            text-decoration: underline;
+        }
+        
+        /* Sekcja hero */
+        .hero {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            margin-bottom: 4rem;
+            text-align: center;
+        }
+        
+        .hero-title {
+            font-size: 3rem;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: #495057;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .coming-soon {
+            background-color: #212529;
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 2rem;
+            display: inline-block;
+            margin: 2rem auto;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+        
+        /* Sekcja o mnie */
+        .about {
+            background-color: white;
+            border-radius: 1rem;
+            padding: 3rem;
+            margin-bottom: 4rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            text-align: center;
+        }
+        
+        .about h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: #212529;
+        }
+        
+        .about p {
+            color: #495057;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            line-height: 1.7;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* Sekcja projektu */
+        .project {
+            background-color: white;
+            border-radius: 1rem;
+            padding: 3rem;
+            margin-bottom: 4rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            text-align: center;
+        }
+        
+        .project h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: #212529;
+        }
+        
+        .project p {
+            color: #495057;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            line-height: 1.7;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .tech-stack {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .tech-item {
+            background-color: #f8f9fa;
+            padding: 1rem 2rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+        }
+        
+        /* Sekcja kontakt */
+        .contact {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .contact h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: #212529;
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        .contact-info a {
+            color: #495057;
+            text-decoration: none;
+            transition: color 0.2s;
+            font-size: 1.1rem;
+        }
+        
+        .contact-info a:hover {
+            color: #212529;
+            text-decoration: underline;
+        }
+        
+        /* Stopka */
+        footer {
+            text-align: center;
+            padding: 3rem 0;
+            color: #6c757d;
+            font-size: 0.9rem;
+            border-top: 1px solid #e9ecef;
+        }
+        
+        /* Responsywność */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.25rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .tech-stack {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+            
+            .container {
+                padding: 1.5rem;
+            }
+            
+            .project, .about {
+                padding: 2rem 1.5rem;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="#" class="logo">Flashy Code</a>
+            <div class="language-switcher">
+                <button class="language-btn active" onclick="switchLanguage('pl')">PL</button>
+                <button class="language-btn" onclick="switchLanguage('en')">EN</button>
+            </div>
+        </header>
+        
+        <main>
+            <!-- Polish Content -->
+            <section class="hero" id="pl-content">
+                <h1 class="hero-title">Flashy Code<br>Stanisław Marcisz</h1>
+                <p class="hero-subtitle">
+                    Łączę sztuczną inteligencję, aplikacje webowe i mobilne w spójne rozwiązania
+                </p>
+                <div class="coming-soon">Wkrótce premiera</div>
+            </section>
+            
+            <section class="about" id="pl-about">
+                <h2>O mnie</h2>
+                <p>
+                    Jestem programistą specjalizującym się w technologiach webowych, mobilnych i AI.
+                </p>
+                <p>
+                    Obecnie skupiam się wyłącznie na rozwoju własnego projektu, który łączy te obszary.
+                </p>
+            </section>
+            
+            <section class="project" id="pl-project">
+                <h2>Mój projekt</h2>
+                <p>
+                    Pracuję nad własnym produktem łączącym sztuczną inteligencję z aplikacjami webowymi i mobilnymi.
+                </p>
+                <p>
+                    Produkt ten ma być czymś zupełnie nowym – rzadkim, niespotykanym dotąd podejściem, wykraczającym poza standardowe modele usługowe.
+                </p>
+                
+                <div class="tech-stack">
+                    <div class="tech-item">AI</div>
+                    <div class="tech-item">Web</div>
+                    <div class="tech-item">Mobile</div>
+                </div>
+            </section>
+            
+            <section class="contact" id="pl-contact">
+                <h2>Kontakt</h2>
+                <p>Jeśli chcesz się skontaktować:</p>
+                
+                <div class="contact-info">
+                    <a href="mailto:stanislawork@gmail.com">stanislawork@gmail.com</a>
+                </div>
+            </section>
+
+            <!-- English Content (hidden by default) -->
+            <section class="hero" id="en-content" style="display: none;">
+                <h1 class="hero-title">Flashy Code<br>Stanisław Marcisz</h1>
+                <p class="hero-subtitle">
+                    Combining artificial intelligence, web and mobile applications into cohesive solutions
+                </p>
+                <div class="coming-soon">Coming soon</div>
+            </section>
+            
+            <section class="about" id="en-about" style="display: none;">
+                <h2>About Me</h2>
+                <p>
+                    I'm a developer specializing in web, mobile and AI technologies.
+                </p>
+                <p>
+                    Currently focused exclusively on developing my own project that combines these areas.
+                </p>
+            </section>
+            
+            <section class="project" id="en-project" style="display: none;">
+                <h2>My Project</h2>
+                <p>
+                    I'm working on my own product combining artificial intelligence with web and mobile applications.
+                </p>
+                <p>
+                    This product is intended to be something entirely new – a rare, unprecedented approach that goes beyond standard service models.
+                </p>
+                
+                <div class="tech-stack">
+                    <div class="tech-item">AI</div>
+                    <div class="tech-item">Web</div>
+                    <div class="tech-item">Mobile</div>
+                </div>
+            </section>
+            
+            <section class="contact" id="en-contact" style="display: none;">
+                <h2>Contact</h2>
+                <p>If you'd like to get in touch:</p>
+                
+                <div class="contact-info">
+                    <a href="mailto:stanislawork@gmail.com">stanislawork@gmail.com</a>
+                </div>
+            </section>
+        </main>
+        
+        <footer id="pl-footer">
+            <p>© 2025 Flashy Code - Stanisław Marcisz. Wszelkie prawa zastrzeżone.</p>
+        </footer>
+        <footer id="en-footer" style="display: none;">
+            <p>© 2025 Flashy Code - Stanisław Marcisz. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+        function switchLanguage(lang) {
+            // Polish content
+            const plContent = document.querySelectorAll('[id^="pl-"]');
+            // English content
+            const enContent = document.querySelectorAll('[id^="en-"]');
+            
+            // Language buttons
+            const plBtn = document.querySelector('.language-btn[onclick="switchLanguage(\'pl\')"]');
+            const enBtn = document.querySelector('.language-btn[onclick="switchLanguage(\'en\')"]');
+            
+            if (lang === 'pl') {
+                // Show Polish content
+                plContent.forEach(el => el.style.display = 'block');
+                // Hide English content
+                enContent.forEach(el => el.style.display = 'none');
+                
+                // Update button states
+                plBtn.classList.add('active');
+                enBtn.classList.remove('active');
+            } else {
+                // Show English content
+                enContent.forEach(el => el.style.display = 'block');
+                // Hide Polish content
+                plContent.forEach(el => el.style.display = 'none');
+                
+                // Update button states
+                enBtn.classList.add('active');
+                plBtn.classList.remove('active');
+            }
+        }
+    </script>
+</body>
+</html>
